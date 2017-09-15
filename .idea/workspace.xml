@@ -44,8 +44,8 @@
       <file leaf-file-name="Camera2BasicFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Camera2BasicFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="638" column="23" selection-start-line="638" selection-start-column="23" selection-end-line="638" selection-end-column="23" />
+            <state relative-caret-position="-2600">
+              <caret line="526" column="53" selection-start-line="526" selection-start-column="53" selection-end-line="526" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#showToast#0;class#Camera2BasicFragment#0" expanded="false" />
@@ -1935,6 +1935,8 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="PJQDU15725001736" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2771,8 +2773,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Camera2BasicFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="638" column="23" selection-start-line="638" selection-start-column="23" selection-end-line="638" selection-end-column="23" />
+        <state relative-caret-position="-2600">
+          <caret line="526" column="53" selection-start-line="526" selection-start-column="53" selection-end-line="526" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#showToast#0;class#Camera2BasicFragment#0" expanded="false" />
