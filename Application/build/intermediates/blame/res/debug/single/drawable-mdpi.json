@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Demos\\android-Camera2Basic-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_info.png",
+        "source": "E:\\Demos\\android-Camera2Basic-master\\Application\\src\\main\\res\\drawable-mdpi\\ic_action_info.png"
+    },
+    {
+        "merged": "E:\\Demos\\android-Camera2Basic-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
+        "source": "E:\\Demos\\android-Camera2Basic-master\\Application\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    }
+]
