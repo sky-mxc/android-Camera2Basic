@@ -18,10 +18,7 @@ package com.example.android.camera2basic;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.arcsoft.facerecognition.AFR_FSDKEngine;
-import com.arcsoft.facerecognition.AFR_FSDKError;
 
 public class CameraActivity extends Activity {
 

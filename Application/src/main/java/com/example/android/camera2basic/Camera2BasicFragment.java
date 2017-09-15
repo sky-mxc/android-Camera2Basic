@@ -60,16 +60,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.arcsoft.facerecognition.AFR_FSDKEngine;
+
 
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -251,6 +252,7 @@ public class Camera2BasicFragment extends Fragment
             if (null != mBackgroundHandler) {
                 mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile));
             }
+
         }
 
     };
@@ -392,6 +394,7 @@ public class Camera2BasicFragment extends Fragment
     private static Size chooseOptimalSize(Size[] choices, int textureViewWidth,
                                           int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
 
+
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<>();
         // Collect the supported resolutions that are smaller than the preview Surface
@@ -402,7 +405,7 @@ public class Camera2BasicFragment extends Fragment
             if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight &&
                     option.getHeight() == option.getWidth() * h / w) {
                 if (option.getWidth() >= textureViewWidth &&
-                        option.getHeight() >= textureViewHeight) {
+                    option.getHeight() >= textureViewHeight) {
                     bigEnough.add(option);
                 } else {
                     notBigEnough.add(option);
@@ -443,13 +446,13 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mFile = new File(Environment.getExternalStorageDirectory(), "skymxc/camera/pic.jpg");
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
         startBackgroundThread();
-
         // When the screen is turned off and turned back on, the SurfaceTexture is already
         // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open
         // a camera and start preview from here (otherwise, we wait until the surface is ready in
@@ -473,6 +476,7 @@ public class Camera2BasicFragment extends Fragment
             new ConfirmationDialog().show(getChildFragmentManager(), FRAGMENT_DIALOG);
         } else {
             FragmentCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+
                     REQUEST_CAMERA_PERMISSION);
         }
     }
@@ -492,10 +496,12 @@ public class Camera2BasicFragment extends Fragment
 
     /**
      * Sets up member variables related to camera.
+
      * 设置为前置摄像头 拿到前置摄像头 ID
      * 配置捕获渲染surface数据的ImageReader
      * 配置预览角度
      * 配置预览尺寸
+
      * @param width  The width of available size for camera preview
      * @param height The height of available size for camera preview
      */
@@ -510,6 +516,7 @@ public class Camera2BasicFragment extends Fragment
                 // We don't use a front facing camera in this sample.
                 Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 if (facing != null && facing != CameraCharacteristics.LENS_FACING_FRONT) {
+
                     continue;
                 }
 
@@ -549,11 +556,13 @@ public class Camera2BasicFragment extends Fragment
                  * 顺时针旋转度; 总是90的倍数
                  * Range of valid values: 0, 90, 180, 270
                  */
+
                 mSensorOrientation = characteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
                 boolean swappedDimensions = false;
                 switch (displayRotation) {
                     case Surface.ROTATION_0:
                     case Surface.ROTATION_180:  //相机方向和手机方向不一致
+
                         if (mSensorOrientation == 90 || mSensorOrientation == 270) {
                             swappedDimensions = true;
                         }
@@ -577,6 +586,7 @@ public class Camera2BasicFragment extends Fragment
                 int maxPreviewHeight = displaySize.y;
 
                 if (swappedDimensions) {    //角度不一致 交换尺寸
+
                     rotatedPreviewWidth = height;
                     rotatedPreviewHeight = width;
                     maxPreviewWidth = displaySize.y;
@@ -594,7 +604,6 @@ public class Camera2BasicFragment extends Fragment
                 // Danger, W.R.! Attempting to use too large a preview size could  exceed the camera
                 // bus' bandwidth limitation, resulting in gorgeous previews but the storage of
                 // garbage capture data.
-
                 /**
                  * map.getOutputSizes(Class klass); 得到一个与klass兼容的输出尺寸 数组 class 只限于几个类之间  其他的返回null
                  *    if (klass == android.media.ImageReader.class) {
@@ -615,6 +624,7 @@ public class Camera2BasicFragment extends Fragment
                  * 如果klass类支持（ImageFormat#PRIVATE）格式，将只返回 针对ImageFormat#PRIVATE格式的尺寸 想知道 具体类具体支持什么格式， 查文档吧
                  * 如果要得到指定格式的 输出尺寸，可以使用  Size[] getOutputSizes(int format)
                  */
+
                 mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
                         rotatedPreviewWidth, rotatedPreviewHeight, maxPreviewWidth,
                         maxPreviewHeight, largest);
@@ -632,6 +642,7 @@ public class Camera2BasicFragment extends Fragment
                 }
 
                 // Check if the flash is supported. 闪光灯
+                // Check if the flash is supported.
                 Boolean available = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
                 mFlashSupported = available == null ? false : available;
 
@@ -743,7 +754,6 @@ public class Camera2BasicFragment extends Fragment
             mPreviewRequestBuilder
                     = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             mPreviewRequestBuilder.addTarget(surface);
-            mPreviewRequestBuilder.addTarget(mImageReader.getSurface());
 
             // Here, we create a CameraCaptureSession for camera preview.
             mCameraDevice.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()),
@@ -765,7 +775,6 @@ public class Camera2BasicFragment extends Fragment
                                 // Flash is automatically enabled when necessary.
                                 setAutoFlash(mPreviewRequestBuilder);
 
-
                                 // Finally, we start displaying the camera preview.
                                 mPreviewRequest = mPreviewRequestBuilder.build();
                                 mCaptureSession.setRepeatingRequest(mPreviewRequest,
@@ -781,6 +790,7 @@ public class Camera2BasicFragment extends Fragment
                             showToast("Failed");
                         }
                     }, mBackgroundHandler
+
             );
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -990,6 +1000,7 @@ public class Camera2BasicFragment extends Fragment
             int ms = calendar.get(Calendar.MILLISECOND);
             String name = "camera2_" + m + "_" + s + "_" + ms + ".jpg";
             mFile = new File(Environment.getExternalStorageDirectory(), "skymxc/camera2/" + name);
+
         }
 
         @Override
@@ -1028,6 +1039,7 @@ public class Camera2BasicFragment extends Fragment
 
 
         }
+
     }
 
     /**

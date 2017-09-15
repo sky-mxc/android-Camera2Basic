@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ``# How to become a contributor and submit your own code
+=======
+# How to become a contributor and submit your own code
+>>>>>>> 332a569fe0f04e16037515a3d55c5cfbac8c4225
 
 ## Contributor License Agreements
 
